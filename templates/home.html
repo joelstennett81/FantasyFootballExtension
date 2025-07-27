@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="container mt-5 text-center">
+        <h1 class="mb-4">📊 Fantasy Football Draft Helper</h1>
+        <p class="lead">Combine expert projections, calculate VORP & VOAS, and dominate your draft.</p>
+        <a href="{% url 'view_player_rankings' %}" class="btn btn-primary mt-4">View Rankings</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Player Rankings{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">📈 VORP & VOAS Rankings</h1>
+
+        <form id="ranking-form" class="mb-4">
+            <div class="row g-3 align-items-center justify-content-center">
+                <div class="col-auto">
+                    <label for="pprType" class="col-form-label">PPR Type:</label>
+                </div>
+                <div class="col-auto">
+                    <select class="form-select" id="pprType" name="ppr_type">
+                        <option value="ppr" selected>Full PPR</option>
+                        <option value="std">Standard</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Get Rankings</button>
+                </div>
+            </div>
+        </form>
+
+        <div id="loading" class="text-center d-none">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2">Calculating rankings...</p>
+        </div>
+
+        <div id="rankings-table" class="table-responsive d-none">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                <tr>
+                    <th>Rank</th>
+                    <th>Player</th>
+                    <th>Position</th>
+                    <th>Team</th>
+                    <th>Projected Pts</th>
+                    <th>VORP</th>
+                    <th>VOAS</th>
+                </tr>
+                </thead>
+                <tbody id="rankings-body">
+                <!-- Rankings will be injected here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("ranking-form").addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const pprType = document.getElementById("pprType").value;
+
+            document.getElementById("loading").classList.remove("d-none");
+            document.getElementById("rankings-table").classList.add("d-none");
+
+            const response = await fetch("/api/player_rankings/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}"
+                },
+                body: JSON.stringify({ppr_type: pprType})
+            });
+
+            const data = await response.json();
+            console.log('data: ', data);
+            const tableBody = document.getElementById("rankings-body");
+            tableBody.innerHTML = "";
+
+            data.forEach((player, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${player.name}</td>
+      <td>${player.position}</td>
+      <td>${player.team}</td>
+      <td>${player.avg_proj}</td>
+      <td>${player.vorp}</td>
+      <td>${player.voas}</td>
+    `;
+                tableBody.appendChild(row);
+            });
+
+            document.getElementById("loading").classList.add("d-none");
+            document.getElementById("rankings-table").classList.remove("d-none");
+        });
+    </script>
+{% endblock %}
