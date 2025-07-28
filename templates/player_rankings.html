@@ -1,94 +1,112 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block title %}Player Rankings{% endblock %}
+{% extends 'base.html' %}
 
 {% block content %}
-    <div class="container mt-5">
-        <h1 class="mb-4 text-center">📈 VORP & VOAS Rankings</h1>
+    <div class="container mt-4">
+        <h1 class="mb-4">Fantasy Player Rankings (VORP & VOAS)</h1>
 
-        <form id="ranking-form" class="mb-4">
-            <div class="row g-3 align-items-center justify-content-center">
-                <div class="col-auto">
-                    <label for="pprType" class="col-form-label">PPR Type:</label>
-                </div>
-                <div class="col-auto">
-                    <select class="form-select" id="pprType" name="ppr_type">
-                        <option value="ppr" selected>Full PPR</option>
-                        <option value="std">Standard</option>
-                    </select>
-                </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-primary">Get Rankings</button>
-                </div>
+        <form id="rankings-form" onsubmit="event.preventDefault(); fetchRankings();">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="num_teams" class="form-label">Number of Teams</label>
+                <select id="num_teams" class="form-select">
+                    <option value="8">8</option>
+                    <option value="10">10</option>
+                    <option value="12" selected>12</option>
+                    <option value="16">16</option>
+                </select>
             </div>
+
+            <div class="mb-3">
+                <label for="ppr_type" class="form-label">Scoring Type</label>
+                <select id="ppr_type" class="form-select">
+                    <option value="std">Standard</option>
+                    <option value="half">Half PPR</option>
+                    <option value="full" selected>Full PPR</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Get Rankings</button>
         </form>
 
-        <div id="loading" class="text-center d-none">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-            <p class="mt-2">Calculating rankings...</p>
-        </div>
+        <hr>
 
-        <div id="rankings-table" class="table-responsive d-none">
-            <table class="table table-striped">
-                <thead class="table-dark">
-                <tr>
-                    <th>Rank</th>
-                    <th>Player</th>
-                    <th>Position</th>
-                    <th>Team</th>
-                    <th>Projected Pts</th>
-                    <th>VORP</th>
-                    <th>VOAS</th>
-                </tr>
-                </thead>
-                <tbody id="rankings-body">
-                <!-- Rankings will be injected here -->
-                </tbody>
-            </table>
+        <div id="results" class="mt-4">
+            <!-- Rankings will be inserted here -->
         </div>
     </div>
 
     <script>
-        document.getElementById("ranking-form").addEventListener("submit", async function (e) {
-            e.preventDefault();
-            const pprType = document.getElementById("pprType").value;
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== "") {
+                const cookies = document.cookie.split(';');
+                for (let cookie of cookies) {
+                    cookie = cookie.trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
 
-            document.getElementById("loading").classList.remove("d-none");
-            document.getElementById("rankings-table").classList.add("d-none");
+        function fetchRankings() {
+            const numTeams = document.getElementById("num_teams").value;
+            const pprType = document.getElementById("ppr_type").value;
+            const csrftoken = getCookie('csrftoken');
 
-            const response = await fetch("/api/player_rankings/", {
+            fetch("/api/player_rankings/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "X-CSRFToken": "{{ csrf_token }}"
+                    "X-CSRFToken": csrftoken
                 },
-                body: JSON.stringify({ppr_type: pprType})
-            });
+                body: JSON.stringify({
+                    num_teams: parseInt(numTeams),
+                    ppr_type: pprType
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById("results");
+                    let html = `
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Player</th>
+                            <th>Position</th>
+                            <th>Team</th>
+                            <th>Avg Proj</th>
+                            <th>VORP</th>
+                            <th>VOAS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
 
-            const data = await response.json();
-            console.log('data: ', data);
-            const tableBody = document.getElementById("rankings-body");
-            tableBody.innerHTML = "";
+                    data.forEach((player, index) => {
+                        html += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${player.name}</td>
+                        <td>${player.position}</td>
+                        <td>${player.team}</td>
+                        <td>${player.avg_proj}</td>
+                        <td>${player.vorp}</td>
+                        <td>${player.voas}</td>
+                    </tr>
+                `;
+                    });
 
-            data.forEach((player, index) => {
-                const row = document.createElement("tr");
-                row.innerHTML = `
-      <td>${index + 1}</td>
-      <td>${player.name}</td>
-      <td>${player.position}</td>
-      <td>${player.team}</td>
-      <td>${player.avg_proj}</td>
-      <td>${player.vorp}</td>
-      <td>${player.voas}</td>
-    `;
-                tableBody.appendChild(row);
-            });
-
-            document.getElementById("loading").classList.add("d-none");
-            document.getElementById("rankings-table").classList.remove("d-none");
-        });
+                    html += "</tbody></table>";
+                    container.innerHTML = html;
+                })
+                .catch(error => {
+                    document.getElementById("results").innerHTML = `<div class="alert alert-danger">Error fetching rankings.</div>`;
+                    console.error("Error:", error);
+                });
+        }
     </script>
 {% endblock %}
