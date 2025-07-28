@@ -24,9 +24,7 @@ def calculate_vorp_and_voas(num_teams=12, starting_spots=None, ppr_type="ppr"):
                 getattr(p, f'projected_points_espn_{suffix}'),
             ]
             p.avg_proj = sum(projections) / len(projections)
-            print('projections:', projections, 'avg_proj:', p.avg_proj)
         except Exception as e:
-            print('exception:', e)
             p.avg_proj = 0.0
 
     pos_replacements = {pos: starting_spots.get(pos, 0) * num_teams for pos in ["QB", "RB", "WR", "TE", "K", "DEF"]}

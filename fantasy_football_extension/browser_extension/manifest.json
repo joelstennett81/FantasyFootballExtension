@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Fantasy Football Rankings Overlay",
+  "version": "1.0",
+  "description": "Displays VORP/VOAS rankings on fantasy platforms",
+  "permissions": [
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_title": "Fantasy Rankings",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.sleeper.app/*",
+        "*://sleeper.com/*",
+        "*://*.sleeper.com/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ]
+}
