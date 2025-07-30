@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f803573e-f3ca-42cd-941c-1171ced4f31b" name="Changes" comment="initialized project">
-      <change afterPath="$PROJECT_DIR$/fantasy_football_extension/browser_extension/content.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fantasy_football_extension/browser_extension/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fantasy_football_extension/browser_extension/popup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fantasy_football_extension/browser_extension/popup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/espn_ppr_rankings_2025.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/espn_std_rankings_2025.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/player_rankings.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player_rankings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/cbs_ppr_rankings_2025.csv" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/cbs_ppr_rankings_2025.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/cbs_std_rankings_2025.csv" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/cbs_std_rankings_2025.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +39,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;add-espn&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Projects/FantasyFootballExtension/fantasy_football_extension/projected_rankings&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -90,7 +90,8 @@
       <workItem from="1753555450509" duration="4605000" />
       <workItem from="1753643085905" duration="3734000" />
       <workItem from="1753653233768" duration="4875000" />
-      <workItem from="1753730234739" duration="5237000" />
+      <workItem from="1753730234739" duration="5978000" />
+      <workItem from="1753824306328" duration="4194000" />
     </task>
     <servers />
   </component>

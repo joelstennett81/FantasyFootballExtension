@@ -72,7 +72,7 @@ def import_csv_rankings(path_to_file, source_type, scoring_type):
             first_name = row["First Name"].strip()
             last_name = row["Last Name"].strip()
             position = row["Position"].strip()
-            team = row["Team"].strip()
+            team = row["Team"].strip().upper()
             points = float(row["Projected Points"])
 
             player, _ = Player.objects.update_or_create(
