@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Fantasy Rankings</title>
+    <title>VORP Vision Rankings</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,20 +19,20 @@
     </style>
 </head>
 <body>
-<h2>Fantasy Rankings</h2>
 
 <label>Number of Teams</label>
 <select id="num_teams">
     <option value="8">8</option>
-    <option value="10">10</option>
-    <option value="12" selected>12</option>
+    <option value="10" selected>10</option>
+    <option value="12">12</option>
     <option value="16">16</option>
 </select>
 
 <label>Scoring Type</label>
 <select id="ppr_type">
+    <option value="full" selected>PPR</option>
     <option value="std">Standard</option>
-    <option value="full" selected>Full PPR</option>
+
 </select>
 
 <label>Position</label>
@@ -48,9 +48,9 @@
 
 <label>Sort By</label>
 <select id="sort_by">
+    <option value="avg_proj">Avg Projected</option>
     <option value="vorp" selected>VORP</option>
     <option value="voas">VOAS</option>
-    <option value="avg_proj">Avg Projected</option>
 </select>
 
 <button id="load-rankings">Show Rankings</button>

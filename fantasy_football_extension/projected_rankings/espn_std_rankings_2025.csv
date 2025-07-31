@@ -1,7 +1,7 @@
 First Name,Last Name,Position,Team,Projected Points
 Josh,Allen,QB,Buf,365.5
 Lamar,Jackson,QB,Bal,362.7
-Jayden,Daniels,QB,Wsh,367.3
+Jayden,Daniels,QB,WAS,367.3
 Jalen,Hurts,QB,Phi,364.5
 Joe,Burrow,QB,Cin,328.9
 Patrick,Mahomes,QB,KC,325.1
@@ -20,12 +20,12 @@ J.J.,McCarthy,QB,Min,281.6
 Tua,Tagovailoa,QB,Mia,274.3
 Matthew,Stafford,QB,LAR,274.5
 C.J.,Stroud,QB,Hou,272.4
-Trevor,Lawrence,QB,Jax,278.7
+Trevor,Lawrence,QB,Jac,278.7
 Cameron,Ward,QB,Ten,255.6
 Michael,Penix Jr.,QB,Atl,250.6
 Bryce,Young,QB,Car,265.9
 Geno,Smith,QB,LV,259.1
-Anthony,Richardson Sr.,QB,Ind,181.4
+Anthony,Richardson,QB,Ind,181.4
 Sam,Darnold,QB,Sea,245.2
 Aaron,Rodgers,QB,Pit,231.5
 Russell,Wilson,QB,NYG,119.8
@@ -45,7 +45,7 @@ Gardner,Minshew,QB,KC,2.7
 Jameis,Winston,QB,NYG,0
 Jake,Browning,QB,Cin,2.9
 Jimmy,Garoppolo,QB,LAR,2.7
-Marcus,Mariota,QB,Wsh,2.7
+Marcus,Mariota,QB,WAS,2.7
 Sam,Howell,QB,Min,2.6
 Joe,Milton III,QB,Dal,2.6
 Kyle,Trask,QB,TB,2.5
@@ -72,21 +72,21 @@ Breece,Hall,RB,NYJ,184.5
 D'Andre,Swift,RB,Chi,188.3
 David,Montgomery,RB,Det,177.3
 Kaleb,Johnson,RB,Pit,188.5
-Aaron,Jones Sr.,RB,Min,165.7
+Aaron,Jones,RB,Min,165.7
 TreVeyon,Henderson,RB,NE,172.7
 Tony,Pollard,RB,Ten,164.9
 RJ,Harvey,RB,Den,158.6
 Isiah,Pacheco,RB,KC,168.5
-Brian,Robinson Jr.,RB,Wsh,173.7
+Brian,Robinson Jr.,RB,WAS,173.7
 Tyrone,Tracy Jr.,RB,NYG,160.1
 Javonte,Williams,RB,Dal,162.8
 Rhamondre,Stevenson,RB,NE,150.5
 Jaylen,Warren,RB,Pit,139.9
 Cam,Skattebo,RB,NYG,123
-JK,Dobbins,RB,Den,133.3
-Tank,Bigsby,RB,Jax,125.6
-Travis,Etienne Jr.,RB,Jax,109.3
-Austin,Ekeler,RB,Wsh,114.1
+J.K.,Dobbins,RB,Den,133.3
+Tank,Bigsby,RB,Jac,125.6
+Travis,Etienne Jr.,RB,Jac,109.3
+Austin,Ekeler,RB,WAS,114.1
 Tyjae,Spears,RB,Ten,118.3
 Jerome,Ford,RB,Cle,78.9
 Jordan,Mason,RB,Min,107.6
@@ -98,7 +98,7 @@ Trey,Benson,RB,Ari,92.2
 Tyler,Allgeier,RB,Atl,86.8
 Najee,Harris,RB,LAC,96.3
 Jaylen,Wright,RB,Mia,73.3
-Bhayshul,Tuten,RB,Jax,41.7
+Bhayshul,Tuten,RB,Jac,41.7
 Rashid,Shaheed,WR,NO,122.6
 Tre,Harris,WR,LAC,107.8
 Jayden,Higgins,WR,Hou,107.3
@@ -136,13 +136,13 @@ Dont'e,Thornton Jr.,WR,LV,40.5
 Adonai,Mitchell,WR,Ind,53.1
 Amari,Cooper,WR,FA,0
 Gabe,Davis,WR,FA,0
-Dyami,Brown,WR,Jax,67.3
+Dyami,Brown,WR,Jac,67.3
 Josh,Reynolds,WR,NYJ,72.1
 Ray-Ray,McCloud III,WR,Atl,65.1
 Tutu,Atwell,WR,LAR,65.2
 Calvin,Austin III,WR,Pit,56.8
 Christian,Watson,WR,GB,36.4
-Noah,Brown,WR,Wsh,46.3
+Noah,Brown,WR,WAS,46.3
 Jalen,Coker,WR,Car,45.3
 Allen,Lazard,WR,NYJ,45.5
 Alec,Pierce,WR,Ind,47.6
@@ -164,31 +164,31 @@ Travis,Kelce,TE,KC,101.50
 David,Njoku,TE,Cle,101.00
 Amon-Ra,St. Brown,WR,Det,173.6
 Nico,Collins,WR,Hou,180.6
-Brian,Thomas Jr.,WR,Jax,175.1
+Brian,Thomas Jr.,WR,Jac,175.1
 Tucker,Kraft,TE,GB,97.00
 A.J.,Brown,WR,Phi,184.2
 Drake,London,WR,Atl,169.5
 Evan,Engram,TE,Den,89.30
 Colston,Loveland,TE,Chi,94.80
 Dallas,Goedert,TE,Phi,91.90
-Kyle,Pitts Sr.,TE,Atl,92.60
+Kyle,Pitts,TE,Atl,92.60
 Dalton,Kincaid,TE,Buf,91.10
 Tee,Higgins,WR,Cin,170.4
 Tyler,Warren,TE,Ind,89.10
 Hunter,Henry,TE,NE,90.90
 Jake,Ferguson,TE,Dal,83.40
 Darren,Waller,TE,Mia,87.30
-Chig,Okonkwo,TE,Ten,82.70
+Chigoziem,Okonkwo,TE,Ten,82.70
 Ladd,McConkey,WR,LAC,163
 Jonnu,Smith,TE,Pit,78.90
-Zach,Ertz,TE,Wsh,83.00
+Zach,Ertz,TE,WAS,83.00
 Davante,Adams,WR,LAR,171.8
 Mike,Gesicki,TE,Cin,78.80
 Elijah,Arroyo,TE,Sea,77.00
-Brenton,Strange,TE,Jax,78.70
+Brenton,Strange,TE,Jac,78.70
 Tyreek,Hill,WR,Mia,169.2
 Cade,Otton,TE,TB,85.70
-Terry,McLaurin,WR,Wsh,161.1
+Terry,McLaurin,WR,WAS,161.1
 Mike,Evans,WR,TB,156.7
 Jaxon,Smith-Njigba,WR,Sea,152.6
 Mason,Taylor,TE,NYJ,74.70
@@ -260,21 +260,21 @@ Chris,Boswell,K,Pit,138.2
 Harrison,Butker,K,KC,138.9
 Cairo,Santos,K,Chi,139.6
 Tyler,Loop,K,Bal,140
-Matt,Gay,K,Wsh,140
+Matt,Gay,K,WAS,140
 Ka'imi,Fairbairn,K,Hou,137.1
 Joshua,Karty,K,LAR,137.3
 Brandon,McManus,K,GB,135.6
 Evan,McPherson,K,Cin,136.1
 Jason,Myers,K,Sea,135
 Wil,Lutz,K,Den,134.7
-Cam,Little,K,Jax,134.1
+Cam,Little,K,Jac,134.1
 Will,Reichard,K,Min,132.9
 Spencer,Shrader,K,Ind,131.5
 Ryan,Fitzgerald,K,Car,126.4
 Daniel,Carlson,K,LV,130.1
 Chad,Ryland,K,Ari,127.9
 Younghoe,Koo,K,Atl,127.8
-Andy,Borregales,K,NE,127.6
+Andres,Borregales,K,NE,127.6
 Jake,Moody,K,SF,126.2
 Blake,Grupe,K,NO,125.9
 Joey,Slye,K,Ten,124.9
@@ -303,7 +303,7 @@ Rams,DEF,DST,LAR,87
 49ers,DEF,DST,SF,77.8
 Dolphins,DEF,DST,Mia,77.9
 Chargers,DEF,DST,LAC,69.3
-Jaguars,DEF,DST,Jax,85.6
+Jaguars,DEF,DST,Jac,85.6
 Cowboys,DEF,DST,Dal,81.2
 Browns,DEF,DST,Cle,70.2
 Titans,DEF,DST,Ten,72.1
@@ -320,7 +320,7 @@ Ja'Tavion,Sanders,TE,Car,58.20
 Tyler,Conklin,TE,LAC,47.10
 Michael,Mayer,TE,LV,41.00
 Noah,Fant,TE,FA,0.00
-Ben,Sinnott,TE,Wsh,32.90
+Ben,Sinnott,TE,WAS,32.90
 Terrance,Ferguson,TE,LAR,29.40
 AJ,Barner,TE,Sea,42.70
 Will,Dissly,TE,LAC,34.90
@@ -346,11 +346,11 @@ DeVonta,Smith,WR,Phi,134.7
 Rome,Odunze,WR,Chi,145.5
 Tetairoa,McMillan,WR,Car,138.7
 Jerry,Jeudy,WR,Cle,137.6
-Travis,Hunter,WR,Jax,133.5
+Travis,Hunter,WR,Jac,133.5
 Chris,Godwin,WR,TB,119.3
 Matthew,Golden,WR,GB,135.5
 Cooper,Kupp,WR,Sea,126
-Deebo,Samuel Sr.,WR,Wsh,138.1
+Deebo,Samuel,WR,WAS,138.1
 Jakobi,Meyers,WR,LV,130.6
 Chris,Olave,WR,NO,124
 Jordan,Addison,WR,Min,122.8

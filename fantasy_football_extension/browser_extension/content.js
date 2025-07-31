@@ -1,29 +1,28 @@
 let undoStack = [];
+let allPlayers = [];
+let draftedPlayers = new Set();
 
 chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
+    console.log('request.type: ', request.type);
     if (request.type === "SHOW_RANKINGS") {
         const {num_teams, ppr_type, position, sort_by} = request.filters;
 
-        // Remove existing panel if already present
         const existing = document.getElementById("fantasy-rankings-extension");
         if (existing) existing.remove();
+
+        localStorage.removeItem("draftedPlayers");
+        draftedPlayers = new Set();
 
         try {
             const response = await fetch("http://127.0.0.1:8000/api/player_rankings/", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    num_teams,
-                    ppr_type,
-                    position,
-                    sort_by
-                })
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({num_teams, ppr_type, position, sort_by})
             });
 
             const players = await response.json();
-            createFloatingPanel(players);
+            allPlayers = players;
+            renderPanel(players, "", sort_by);
         } catch (err) {
             console.error("Failed to load rankings:", err);
             alert("Failed to load fantasy rankings. Check your API or CORS settings.");
@@ -31,142 +30,210 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     }
 });
 
-function createFloatingPanel(players) {
+function renderPanel(players, selectedPosition = "", selectedSort = "vorp") {
+    createFloatingPanel(players, selectedPosition, selectedSort);
+}
+
+function updateDraftFromPage() {
+    document.querySelectorAll(".drafted .player-name").forEach(el => {
+        const shortName = el.textContent.trim();
+        const position = el.closest(".drafted").querySelector(".position")?.textContent?.split(" - ")[0]?.trim();
+        const matched = matchFullName(shortName, position);
+        if (matched && !draftedPlayers.has(matched.name)) {
+            markPlayerAsDrafted(matched.name);
+        }
+    });
+}
+
+function matchFullName(shortName, position) {
+    const [initial, ...rest] = shortName.split(" ");
+    const shortLastName = rest.join(" ").toLowerCase();
+
+    return allPlayers.find(p => {
+        const [first, ...lastParts] = p.name.split(" ");
+
+        // Remove suffixes like Jr., III, etc.
+        const suffixes = ["jr", "sr", "ii", "iii", "iv", "v"];
+        const lastNameWords = lastParts.filter(part => !suffixes.includes(part.toLowerCase()));
+        const fullLastName = lastNameWords.join(" ").toLowerCase();
+
+        return (
+            p.position === position &&
+            fullLastName === shortLastName &&
+            first.charAt(0).toUpperCase() === initial.charAt(0).toUpperCase()
+        );
+    });
+}
+
+
+function markPlayerAsDrafted(name) {
+    draftedPlayers.add(name);
+    const row = [...document.querySelectorAll("#fantasy-rankings-extension tr")].find(tr =>
+        tr.querySelector("td:nth-child(2)")?.textContent.trim().toLowerCase() === name.toLowerCase()
+    );
+    const checkbox = document.querySelector(`input[data-player-name="${name}"]`);
+    if (row && checkbox && !checkbox.checked) {
+        row.classList.add("disappeared");
+        checkbox.checked = true;
+        undoStack.push({row, checkbox});
+        updateLocalStorage();
+    }
+}
+
+function createFloatingPanel(players, selectedPosition = "", selectedSort = "vorp") {
+    const existing = document.getElementById("fantasy-rankings-extension");
+    if (existing) existing.remove();
+
     undoStack = [];
-    const hiddenPlayers = new Set(JSON.parse(localStorage.getItem("draftedPlayers") || "[]"));
+    draftedPlayers = new Set(JSON.parse(localStorage.getItem("draftedPlayers") || "[]"));
 
     const panel = document.createElement("div");
     panel.id = "fantasy-rankings-extension";
-    panel.style.position = "fixed";
-    panel.style.top = "80px";
-    panel.style.right = "20px";
-    panel.style.width = "430px";
-    panel.style.height = "500px";
-    panel.style.backgroundColor = "white";
-    panel.style.border = "2px solid #222";
-    panel.style.overflowY = "scroll";
-    panel.style.zIndex = 9999;
-    panel.style.boxShadow = "0 4px 12px rgba(0,0,0,0.25)";
-    panel.style.padding = "10px";
-    panel.style.fontSize = "12px";
-    panel.style.fontFamily = "Arial, sans-serif";
-
-    const style = `
-        <style>
-            #fantasy-rankings-extension table {
-                width: 100%;
-                border-collapse: collapse;
-                font-size: 12px;
-            }
-            #fantasy-rankings-extension th, #fantasy-rankings-extension td {
-                padding: 4px;
-                text-align: left;
-            }
-            #fantasy-rankings-extension th {
-                background-color: #f0f0f0;
-                position: sticky;
-                top: 0;
-                z-index: 1;
-            }
-            .tier-1 { background-color: #e0f7fa; }
-            .tier-2 { background-color: #f1f8e9; }
-            .tier-3 { background-color: #fffde7; }
-            .tier-4 { background-color: #ffecb3; }
-            .tier-5 { background-color: #ffcdd2; }
-            .disappeared { display: none !important; }
-            #fantasy-rankings-extension button#undo-button {
-                background-color: #eee;
-                border: 1px solid #aaa;
-                font-size: 11px;
-                padding: 2px 6px;
-                cursor: pointer;
-                border-radius: 4px;
-            }
-        </style>
-    `;
-
-    let html = `
-        ${style}
-        <strong>Fantasy Rankings</strong>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-size: 11px;">
-            <span>Click players as drafted</span>
-            <button id="undo-button">Undo Last</button>
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Player</th>
-                    <th>Pos</th>
-                    <th>VORP</th>
-                    <th>VOAS</th>
-                    <th>Avg</th>
-                </tr>
-            </thead>
-            <tbody>
-    `;
-
-    players.slice(0, 300).forEach((p, i) => {
-        const rowId = `rank-row-${i}`;
-        const isHidden = hiddenPlayers.has(p.name);
-        const tierClass = getTierClass(p.vorp);
-        html += `
-            <tr id="${rowId}" class="${tierClass} ${isHidden ? 'disappeared' : ''}">
-                <td><input type="checkbox" class="drafted-checkbox" data-row-id="${rowId}" data-player-name="${p.name}" ${isHidden ? "checked" : ""}></td>
-                <td>${p.name}</td>
-                <td>${p.position}</td>
-                <td>${Number(p.vorp).toFixed(1)}</td>
-                <td>${Number(p.voas).toFixed(1)}</td>
-                <td>${Number(p.avg_proj).toFixed(1)}</td>
-            </tr>
-        `;
+    Object.assign(panel.style, {
+        position: "fixed", top: "80px", right: "20px", width: "430px", height: "500px",
+        backgroundColor: "#1e1e1e", color: "#f0f0f0", border: "2px solid #555",
+        overflowY: "scroll", zIndex: 9999, boxShadow: "0 4px 12px rgba(0,0,0,0.5)",
+        padding: "10px", fontSize: "12px", fontFamily: "Arial, sans-serif", borderRadius: "8px"
     });
 
-    html += `
+    panel.innerHTML = `
+        <div id="fantasy-rankings-header" style="display:flex;justify-content:space-between;align-items:center;font-weight:bold;margin-bottom:5px;">
+            <span>VORP Vision</span>
+            <div>
+                <button id="update-draft">Update Draft Board</button>
+                <button id="toggle-drafted">Show Drafted</button>
+                <button id="undo-button">Undo</button>
+                <button id="close-button">✖</button>
+            </div>
+        </div>
+        <div style="display: flex; gap: 10px; margin: 6px 0; font-size: 11px;">
+            <label>Position:
+                <select id="position-filter">
+                    <option value="" ${selectedPosition === "" ? "selected" : ""}>All</option>
+                    <option value="QB" ${selectedPosition === "QB" ? "selected" : ""}>QB</option>
+                    <option value="RB" ${selectedPosition === "RB" ? "selected" : ""}>RB</option>
+                    <option value="WR" ${selectedPosition === "WR" ? "selected" : ""}>WR</option>
+                    <option value="TE" ${selectedPosition === "TE" ? "selected" : ""}>TE</option>
+                    <option value="DEF" ${selectedPosition === "DEF" ? "selected" : ""}>DEF</option>
+                    <option value="K" ${selectedPosition === "K" ? "selected" : ""}>K</option>
+                </select>
+            </label>
+            <label>Sort:
+                <select id="sort-filter">
+                    <option value="vorp" ${selectedSort === "vorp" ? "selected" : ""}>VORP</option>
+                    <option value="voas" ${selectedSort === "voas" ? "selected" : ""}>VOAS</option>
+                </select>
+            </label>
+        </div>
+        <table>
+            <thead><tr><th></th><th>Player</th><th>Pos</th><th>VORP</th><th>VOAS</th><th>Avg</th></tr></thead>
+            <tbody>
+                ${players.map((p, i) => {
+        const isHidden = draftedPlayers.has(p.name);
+        return `
+                    <tr id="rank-row-${i}" class="${getTierClass(p.vorp)} ${isHidden ? 'disappeared' : ''}">
+                        <td><input type="checkbox" class="drafted-checkbox" data-row-id="rank-row-${i}" data-player-name="${p.name}" ${isHidden ? "checked" : ""}></td>
+                        <td>${p.name}</td>
+                        <td>${p.position}</td>
+                        <td>${p.vorp.toFixed(1)}</td>
+                        <td>${p.voas.toFixed(1)}</td>
+                        <td>${p.avg_proj.toFixed(1)}</td>
+                    </tr>`;
+    }).join("")}
             </tbody>
         </table>
     `;
-
-    panel.innerHTML = html;
     document.body.appendChild(panel);
+    observeDraftBoard();  // <--- restore draft sync
+    makeDraggable(panel, panel.querySelector("#fantasy-rankings-header"));  // <--- restore drag
 
-    const updateLocalStorage = () => {
-        const current = Array.from(panel.querySelectorAll(".drafted-checkbox"))
-            .filter(cb => cb.checked)
-            .map(cb => cb.dataset.playerName);
-        localStorage.setItem("draftedPlayers", JSON.stringify(current));
-    };
 
-    // Checkbox logic
     panel.querySelectorAll(".drafted-checkbox").forEach(cb => {
         cb.addEventListener("change", () => {
-            const row = panel.querySelector(`#${cb.dataset.rowId}`);
-            if (!row) return;
+            const row = document.getElementById(cb.dataset.rowId);
+            const name = cb.dataset.playerName;
 
             if (cb.checked) {
-                row.classList.add("disappeared");
-                undoStack.push({row, checkbox: cb});
+                draftedPlayers.add(name);
+                undoStack.push({row, checkbox: cb, drafted: true});
+                console.log(`Added to drafted: ${name}`);
             } else {
-                row.classList.remove("disappeared");
-                undoStack = undoStack.filter(r => r.row !== row);
+                draftedPlayers.delete(name);
+                undoStack.push({row, checkbox: cb, drafted: false});
+                console.log(`Removed from drafted: ${name}`);
             }
 
             updateLocalStorage();
+            applyDraftToggleView();
         });
     });
 
-    // Undo button logic
-    const undoButton = panel.querySelector("#undo-button");
-    if (undoButton) {
-        undoButton.addEventListener("click", () => {
-            const last = undoStack.pop();
-            if (last) {
-                last.row.classList.remove("disappeared");
-                last.checkbox.checked = false;
-                updateLocalStorage();
-            }
-        });
-    }
+    panel.querySelector("#toggle-drafted").addEventListener("click", (e) => {
+        const showingDrafted = e.target.textContent === "Show Drafted";
+        e.target.textContent = showingDrafted ? "Show Undrafted" : "Show Drafted";
+        console.log(`Toggle view: Showing ${showingDrafted ? 'drafted' : 'undrafted'} players`);
+        applyDraftToggleView();
+    });
+
+    panel.querySelector("#undo-button").addEventListener("click", () => {
+        const last = undoStack.pop();
+        if (!last) return;
+
+        const name = last.checkbox.dataset.playerName;
+        if (last.drafted) {
+            draftedPlayers.delete(name);
+            last.checkbox.checked = false;
+        } else {
+            draftedPlayers.add(name);
+            last.checkbox.checked = true;
+        }
+
+        updateLocalStorage();
+        applyDraftToggleView();
+    });
+
+    panel.querySelector("#update-draft").addEventListener("click", updateDraftFromPage);
+    panel.querySelector("#close-button").addEventListener("click", () => panel.remove());
+
+    panel.querySelector("#position-filter").addEventListener("change", () => {
+        const pos = panel.querySelector("#position-filter").value;
+        const sortBy = panel.querySelector("#sort-filter").value;
+        const filtered = pos ? allPlayers.filter(p => p.position === pos) : allPlayers;
+        const sorted = [...filtered].sort((a, b) => b[sortBy] - a[sortBy]);
+        renderPanel(sorted, pos, sortBy);
+    });
+
+    panel.querySelector("#sort-filter").addEventListener("change", () => {
+        const pos = panel.querySelector("#position-filter").value;
+        const sortBy = panel.querySelector("#sort-filter").value;
+        const filtered = pos ? allPlayers.filter(p => p.position === pos) : allPlayers;
+        const sorted = [...filtered].sort((a, b) => b[sortBy] - a[sortBy]);
+        renderPanel(sorted, pos, sortBy);
+    });
+
+}
+
+function updateLocalStorage() {
+    localStorage.setItem("draftedPlayers", JSON.stringify([...draftedPlayers]));
+}
+
+function applyDraftToggleView() {
+    const isShowingDrafted = document.querySelector("#toggle-drafted").textContent === "Show Undrafted";
+
+    document.querySelectorAll("tbody tr").forEach(row => {
+        const cb = row.querySelector(".drafted-checkbox");
+        const isDrafted = cb.checked;
+        const name = cb.dataset.playerName;
+        row.classList.remove("disappeared");
+
+        if ((isShowingDrafted && isDrafted) || (!isShowingDrafted && !isDrafted)) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+
+        console.log(`Player: ${name}, Drafted: ${isDrafted}, Checkbox: ${cb.checked}`);
+    });
 }
 
 function getTierClass(vorp) {
@@ -176,3 +243,30 @@ function getTierClass(vorp) {
     if (vorp >= 0) return "tier-4";
     return "tier-5";
 }
+
+function makeDraggable(panel, header) {
+    let offsetX = 0, offsetY = 0, isDragging = false;
+    header.addEventListener("mousedown", e => {
+        isDragging = true;
+        offsetX = e.clientX - panel.getBoundingClientRect().left;
+        offsetY = e.clientY - panel.getBoundingClientRect().top;
+        document.body.style.userSelect = "none";
+    });
+    document.addEventListener("mouseup", () => {
+        isDragging = false;
+        document.body.style.userSelect = "";
+    });
+    document.addEventListener("mousemove", e => {
+        if (isDragging) {
+            panel.style.top = `${e.clientY - offsetY}px`;
+            panel.style.left = `${e.clientX - offsetX}px`;
+            panel.style.right = "auto";
+        }
+    });
+}
+
+function observeDraftBoard() {
+    const observer = new MutationObserver(updateDraftFromPage);
+    observer.observe(document.body, {childList: true, subtree: true});
+}
+

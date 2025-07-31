@@ -90,7 +90,7 @@ def import_csv_rankings(path_to_file, source_type, scoring_type):
                 if scoring_type == 'ppr':
                     player.projected_points_espn_ppr = points
                 elif scoring_type == 'std':
-                    player.projected_points_cbs_ppr = points
+                    player.projected_points_espn_std = points
             player.save()
             count += 1
 

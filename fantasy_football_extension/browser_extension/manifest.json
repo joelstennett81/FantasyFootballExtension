@@ -23,7 +23,8 @@
       ],
       "js": [
         "content.js"
-      ]
+      ],
+      "css": ["style.css"]
     }
   ]
 }
