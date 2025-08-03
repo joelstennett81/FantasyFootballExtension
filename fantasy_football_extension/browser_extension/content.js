@@ -5,7 +5,7 @@ let draftedPlayers = new Set();
 chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     console.log('request.type: ', request.type);
     if (request.type === "SHOW_RANKINGS") {
-        const {num_teams, ppr_type, position, sort_by} = request.filters;
+        const {num_teams, ppr_type, position, sort_by, token} = request.filters;
 
         const existing = document.getElementById("fantasy-rankings-extension");
         if (existing) existing.remove();
@@ -16,16 +16,21 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
         try {
             const response = await fetch("http://127.0.0.1:8000/api/player_rankings/", {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Token ${token}`
+                },
                 body: JSON.stringify({num_teams, ppr_type, position, sort_by})
             });
+
+            if (!response.ok) throw new Error("Unauthorized");
 
             const players = await response.json();
             allPlayers = players;
             renderPanel(players, "", sort_by);
         } catch (err) {
             console.error("Failed to load rankings:", err);
-            alert("Failed to load fantasy rankings. Check your API or CORS settings.");
+            alert("Failed to load fantasy rankings. You must be logged in.");
         }
     }
 });
@@ -51,8 +56,6 @@ function matchFullName(shortName, position) {
 
     return allPlayers.find(p => {
         const [first, ...lastParts] = p.name.split(" ");
-
-        // Remove suffixes like Jr., III, etc.
         const suffixes = ["jr", "sr", "ii", "iii", "iv", "v"];
         const lastNameWords = lastParts.filter(part => !suffixes.includes(part.toLowerCase()));
         const fullLastName = lastNameWords.join(" ").toLowerCase();
@@ -64,7 +67,6 @@ function matchFullName(shortName, position) {
         );
     });
 }
-
 
 function markPlayerAsDrafted(name) {
     draftedPlayers.add(name);
@@ -131,22 +133,21 @@ function createFloatingPanel(players, selectedPosition = "", selectedSort = "vor
                 ${players.map((p, i) => {
         const isHidden = draftedPlayers.has(p.name);
         return `
-                    <tr id="rank-row-${i}" class="${getTierClass(p.vorp)} ${isHidden ? 'disappeared' : ''}">
-                        <td><input type="checkbox" class="drafted-checkbox" data-row-id="rank-row-${i}" data-player-name="${p.name}" ${isHidden ? "checked" : ""}></td>
-                        <td>${p.name}</td>
-                        <td>${p.position}</td>
-                        <td>${p.vorp.toFixed(1)}</td>
-                        <td>${p.voas.toFixed(1)}</td>
-                        <td>${p.avg_proj.toFixed(1)}</td>
-                    </tr>`;
+                        <tr id="rank-row-${i}" class="${getTierClass(p.vorp)} ${isHidden ? 'disappeared' : ''}">
+                            <td><input type="checkbox" class="drafted-checkbox" data-row-id="rank-row-${i}" data-player-name="${p.name}" ${isHidden ? "checked" : ""}></td>
+                            <td>${p.name}</td>
+                            <td>${p.position}</td>
+                            <td>${p.vorp.toFixed(1)}</td>
+                            <td>${p.voas.toFixed(1)}</td>
+                            <td>${p.avg_proj.toFixed(1)}</td>
+                        </tr>`;
     }).join("")}
             </tbody>
         </table>
     `;
     document.body.appendChild(panel);
-    observeDraftBoard();  // <--- restore draft sync
-    makeDraggable(panel, panel.querySelector("#fantasy-rankings-header"));  // <--- restore drag
-
+    observeDraftBoard();
+    makeDraggable(panel, panel.querySelector("#fantasy-rankings-header"));
 
     panel.querySelectorAll(".drafted-checkbox").forEach(cb => {
         cb.addEventListener("change", () => {
@@ -156,11 +157,9 @@ function createFloatingPanel(players, selectedPosition = "", selectedSort = "vor
             if (cb.checked) {
                 draftedPlayers.add(name);
                 undoStack.push({row, checkbox: cb, drafted: true});
-                console.log(`Added to drafted: ${name}`);
             } else {
                 draftedPlayers.delete(name);
                 undoStack.push({row, checkbox: cb, drafted: false});
-                console.log(`Removed from drafted: ${name}`);
             }
 
             updateLocalStorage();
@@ -171,7 +170,6 @@ function createFloatingPanel(players, selectedPosition = "", selectedSort = "vor
     panel.querySelector("#toggle-drafted").addEventListener("click", (e) => {
         const showingDrafted = e.target.textContent === "Show Drafted";
         e.target.textContent = showingDrafted ? "Show Undrafted" : "Show Drafted";
-        console.log(`Toggle view: Showing ${showingDrafted ? 'drafted' : 'undrafted'} players`);
         applyDraftToggleView();
     });
 
@@ -210,7 +208,6 @@ function createFloatingPanel(players, selectedPosition = "", selectedSort = "vor
         const sorted = [...filtered].sort((a, b) => b[sortBy] - a[sortBy]);
         renderPanel(sorted, pos, sortBy);
     });
-
 }
 
 function updateLocalStorage() {
@@ -223,16 +220,8 @@ function applyDraftToggleView() {
     document.querySelectorAll("tbody tr").forEach(row => {
         const cb = row.querySelector(".drafted-checkbox");
         const isDrafted = cb.checked;
-        const name = cb.dataset.playerName;
         row.classList.remove("disappeared");
-
-        if ((isShowingDrafted && isDrafted) || (!isShowingDrafted && !isDrafted)) {
-            row.style.display = "";
-        } else {
-            row.style.display = "none";
-        }
-
-        console.log(`Player: ${name}, Drafted: ${isDrafted}, Checkbox: ${cb.checked}`);
+        row.style.display = (isShowingDrafted && isDrafted) || (!isShowingDrafted && !isDrafted) ? "" : "none";
     });
 }
 
@@ -269,4 +258,3 @@ function observeDraftBoard() {
     const observer = new MutationObserver(updateDraftFromPage);
     observer.observe(document.body, {childList: true, subtree: true});
 }
-
