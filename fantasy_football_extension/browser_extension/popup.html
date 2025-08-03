@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>VORP Vision Rankings</title>
     <style>
         body {
@@ -10,51 +10,77 @@
             width: 250px;
         }
 
-        select, button {
+        select, button, input {
             width: 100%;
             margin-bottom: 10px;
             padding: 5px;
             font-size: 14px;
         }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
 
-<label>Number of Teams</label>
-<select id="num_teams">
-    <option value="8">8</option>
-    <option value="10" selected>10</option>
-    <option value="12">12</option>
-    <option value="16">16</option>
-</select>
+<!-- Mode Selection -->
+<div id="mode-selection">
+    <button id="select-login">I Have an Account</button>
+    <button id="select-register">Create Account</button>
+</div>
 
-<label>Scoring Type</label>
-<select id="ppr_type">
-    <option value="full" selected>PPR</option>
-    <option value="std">Standard</option>
+<!-- Login/Register Form -->
+<div id="auth-section" class="hidden">
+    <div id="name-fields" class="hidden">
+        <input type="text" id="first-name" placeholder="First Name">
+        <input type="text" id="last-name" placeholder="Last Name">
+    </div>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button id="login-btn" class="hidden">Log In</button>
+    <button id="register-btn" class="hidden">Register</button>
+    <div id="auth-message" style="font-size: 12px; color: red;"></div>
+</div>
 
-</select>
+<!-- Rankings -->
+<div id="rankings-section" class="hidden">
+    <label>Number of Teams</label>
+    <select id="num_teams">
+        <option value="8">8</option>
+        <option value="10" selected>10</option>
+        <option value="12">12</option>
+        <option value="16">16</option>
+    </select>
 
-<label>Position</label>
-<select id="position">
-    <option value="all" selected>All</option>
-    <option value="QB">QB</option>
-    <option value="RB">RB</option>
-    <option value="WR">WR</option>
-    <option value="TE">TE</option>
-    <option value="K">K</option>
-    <option value="DEF">DEF</option>
-</select>
+    <label>Scoring Type</label>
+    <select id="ppr_type">
+        <option value="full" selected>PPR</option>
+        <option value="std">Standard</option>
+    </select>
 
-<label>Sort By</label>
-<select id="sort_by">
-    <option value="avg_proj">Avg Projected</option>
-    <option value="vorp" selected>VORP</option>
-    <option value="voas">VOAS</option>
-</select>
+    <label>Position</label>
+    <select id="position">
+        <option value="all" selected>All</option>
+        <option value="QB">QB</option>
+        <option value="RB">RB</option>
+        <option value="WR">WR</option>
+        <option value="TE">TE</option>
+        <option value="K">K</option>
+        <option value="DEF">DEF</option>
+    </select>
 
-<button id="load-rankings">Show Rankings</button>
+    <label>Sort By</label>
+    <select id="sort_by">
+        <option value="avg_proj">Avg Projected</option>
+        <option value="vorp" selected>VORP</option>
+        <option value="voas">VOAS</option>
+    </select>
 
-<script src="popup.js"></script>
+    <button id="load-rankings">Show Rankings</button>
+    <button id="logout-btn" style="background-color: #e74c3c;">Logout</button>
+</div>
+
+<script src="popup.js" type="module"></script>
 </body>
 </html>
