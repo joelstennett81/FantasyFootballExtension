@@ -5,14 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f803573e-f3ca-42cd-941c-1171ced4f31b" name="Changes" comment="initialized project">
+      <change afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/draft_sharks_ppr_rankings_2025.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/draft_sharks_std_rankings_2025.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/browser_extension/content.js" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/browser_extension/content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/browser_extension/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/browser_extension/popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/browser_extension/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/browser_extension/popup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/cbs_ppr_rankings_2025.csv" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/cbs_ppr_rankings_2025.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/cbs_std_rankings_2025.csv" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/cbs_std_rankings_2025.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/espn_ppr_rankings_2025.csv" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/espn_ppr_rankings_2025.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/espn_std_rankings_2025.csv" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/espn_std_rankings_2025.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +42,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;browser-extension-bugs&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;authentication&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Projects/FantasyFootballExtension/fantasy_football_extension/projected_rankings&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -96,7 +99,10 @@
       <workItem from="1753957644207" duration="5780000" />
       <workItem from="1753966779415" duration="16111000" />
       <workItem from="1753983719340" duration="8805000" />
-      <workItem from="1754099984316" duration="6022000" />
+      <workItem from="1754099984316" duration="6464000" />
+      <workItem from="1754250032625" duration="1306000" />
+      <workItem from="1754258576066" duration="1253000" />
+      <workItem from="1754269737438" duration="3162000" />
     </task>
     <servers />
   </component>

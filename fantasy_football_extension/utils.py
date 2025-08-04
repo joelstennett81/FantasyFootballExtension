@@ -22,6 +22,7 @@ def calculate_vorp_and_voas(num_teams=12, starting_spots=None, ppr_type="ppr"):
             projections = [
                 getattr(p, f'projected_points_cbs_{suffix}'),
                 getattr(p, f'projected_points_espn_{suffix}'),
+                getattr(p, f'projected_points_draft_sharks_{suffix}')
             ]
             p.avg_proj = sum(projections) / len(projections)
         except Exception as e:
@@ -81,6 +82,7 @@ def import_csv_rankings(path_to_file, source_type, scoring_type):
                 position=position,
                 team_name=team,
             )
+            print('source type:', source_type)
             if source_type == 'cbs':
                 if scoring_type == 'ppr':
                     player.projected_points_cbs_ppr = points
@@ -91,6 +93,11 @@ def import_csv_rankings(path_to_file, source_type, scoring_type):
                     player.projected_points_espn_ppr = points
                 elif scoring_type == 'std':
                     player.projected_points_espn_std = points
+            elif source_type == 'draft_sharks':
+                if scoring_type == 'ppr':
+                    player.projected_points_draft_sharks_ppr = points
+                elif scoring_type == 'std':
+                    player.projected_points_draft_sharks_std = points
             player.save()
             count += 1
 
