@@ -11,6 +11,7 @@ import re
 
 
 @api_view(['POST'])
+@csrf_exempt
 def player_rankings(request):
     data = request.data
     num_teams = data.get("num_teams", 12)

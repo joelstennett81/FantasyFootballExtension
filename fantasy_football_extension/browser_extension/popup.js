@@ -1,4 +1,12 @@
-const API_BASE = "http://127.0.0.1:8000/api";
+function getApiBaseUrl() {
+    // if you're on your own localhost testing Sleeper clone
+    if (["localhost", "127.0.0.1"].includes(window.location.hostname)) {
+        return "http://127.0.0.1:8000";
+    }
+    // if you're actually on sleeper.com
+    return "https://fantasyfootballextension.onrender.com";
+}
+
 
 const token = localStorage.getItem("authToken");
 
@@ -61,7 +69,7 @@ document.getElementById("login-btn").addEventListener("click", async () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    const res = await fetch(`${API_BASE}/login/`, {
+    const res = await fetch(`${getApiBaseUrl()}/login/`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({username: email, password})
@@ -89,7 +97,7 @@ document.getElementById("register-btn").addEventListener("click", async () => {
         return;
     }
 
-    const res = await fetch(`${API_BASE}/register/`, {
+    const res = await fetch(`${getApiBaseUrl()}/register/`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({email, password, first_name, last_name})
