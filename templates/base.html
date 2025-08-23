@@ -3,21 +3,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Fantasy Football Rankings</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
     <script src="https://unpkg.com/tablesort@5.2.1/dist/sorts/tablesort.number.min.js"></script>
 </head>
 <body>
 
-<header>
-    Fantasy Football Draft Assistant
+<header class="topbar">
+    <div class="logo">
+        <a href="{% url 'home_page' %}">VORP Vision</a>
+    </div>
+    <nav class="nav-links">
+        <a href="{% url 'home_page' %}"
+           class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'view_player_rankings' %}"
+               class="{% if request.resolver_match.url_name == 'view_player_rankings' %}active{% endif %}">Rankings</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Register</a>
+        {% endif %}
+    </nav>
 </header>
+
 
 <div class="container">
     {% block content %}
     {% endblock %}
 </div>
+
+<footer class="text-center py-3 mt-5">
+    <p>{{ now|date:"Y" }} VORP Vision. Built for smarter fantasy drafts.</p>
+    <p>Contact: <a href="mailto:joelstennett17@gmail.com">joelstennett17@gmail.com</a></p>
+</footer>
+
 
 </body>
 </html>

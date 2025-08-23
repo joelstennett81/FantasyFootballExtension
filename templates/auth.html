@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login / Register</title>
+</head>
+<body>
+  <h2>Register</h2>
+  <form id="registerForm">
+    <input type="text" id="regFirst" placeholder="First Name" required><br>
+    <input type="text" id="regLast" placeholder="Last Name" required><br>
+    <input type="email" id="regEmail" placeholder="Email" required><br>
+    <input type="password" id="regPassword" placeholder="Password" required><br>
+    <button type="submit">Register</button>
+  </form>
+  <pre id="registerResult"></pre>
+
+  <h2>Login</h2>
+  <form id="loginForm">
+    <input type="email" id="loginEmail" placeholder="Email" required><br>
+    <input type="password" id="loginPassword" placeholder="Password" required><br>
+    <button type="submit">Login</button>
+  </form>
+  <pre id="loginResult"></pre>
+
+  <h2>Test Authenticated Request</h2>
+  <button id="testRankings">Get Player Rankings</button>
+  <pre id="rankingsResult"></pre>
+
+  <script>
+    // Register
+    document.getElementById("registerForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const res = await fetch("/api/register/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          first_name: document.getElementById("regFirst").value,
+          last_name: document.getElementById("regLast").value,
+          email: document.getElementById("regEmail").value,
+          password: document.getElementById("regPassword").value
+        })
+      });
+      document.getElementById("registerResult").textContent = JSON.stringify(await res.json(), null, 2);
+    });
+
+    // Login
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const res = await fetch("/api/login/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: document.getElementById("loginEmail").value,
+          password: document.getElementById("loginPassword").value
+        })
+      });
+      const data = await res.json();
+      if (data.token) {
+        localStorage.setItem("authToken", data.token);
+      }
+      document.getElementById("loginResult").textContent = JSON.stringify(data, null, 2);
+    });
+
+    // Test authenticated call
+    document.getElementById("testRankings").addEventListener("click", async () => {
+      const token = localStorage.getItem("authToken");
+      if (!token) {
+        document.getElementById("rankingsResult").textContent = "You must login first.";
+        return;
+      }
+      const res = await fetch("/api/player-rankings/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Token " + token
+        },
+        body: JSON.stringify({ num_teams: 12, ppr_type: "full" })
+      });
+      document.getElementById("rankingsResult").textContent = JSON.stringify(await res.json(), null, 2);
+    });
+  </script>
+</body>
+</html>

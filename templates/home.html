@@ -4,9 +4,47 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <div class="container mt-5 text-center">
-        <h1 class="mb-4">📊 Fantasy Football Draft Helper</h1>
-        <p class="lead">Combine expert projections, calculate VORP & VOAS, and dominate your draft.</p>
-        <a href="{% url 'view_player_rankings' %}" class="btn btn-primary mt-4">View Rankings</a>
+    <div class="container mt-5">
+        <section class="about text-start">
+            <h2>About VORP Vision</h2>
+            <p>Draft the right player at the right time. This tool shows you how.</p>
+
+            <h3>What is VORP?</h3>
+            <p><strong>Value Over Replacement Player (VORP)</strong> measures how much better a player is compared to
+                the next replacement-level option at their position. It highlights where the biggest positional
+                drop-offs happen, so you know which positions matter most in each round.</p>
+
+            <h3>What is VOAS?</h3>
+            <p><strong>Value Over Average Starter (VOAS)</strong> compares a player’s projected points to what an
+                average starter at their position would score. This shows who truly gives your lineup a weekly edge, not
+                just who is better than a bench player.</p>
+
+            <h3>Why it matters</h3>
+            <p>Fantasy drafts are about opportunity cost. Taking a wide receiver early might mean missing the last elite
+                running back. Waiting too long on tight end could leave you with a weekly gap. VORP and VOAS cut through
+                the noise and reveal which positions are most valuable now versus later.</p>
+
+            <h3>Use it during Sleeper drafts</h3>
+            <p>VORP Vision isn’t just a website—you can also install the Chrome extension to use live during your
+                Sleeper drafts.</p>
+            <ul>
+                <li><strong>Overlay:</strong> Rankings and VORP/VOAS values appear right on the Sleeper draft board.
+                </li>
+                <li><strong>Sources:</strong> Projections are blended from ESPN, CBS, and Draft Sharks for balanced
+                    accuracy.
+                </li>
+                <li><strong>Smart features:</strong> Drafted players auto-hide, position filters and tiers are built-in,
+                    and you can switch between VORP and VOAS views.
+                </li>
+                <li><strong>Personalized:</strong> Replacement level and average starter values adapt to your league
+                    size and roster setup.
+                </li>
+            </ul>
+
+            <h3>My intent</h3>
+            <p>I built this because I love the strategy of fantasy football. Rankings alone don’t tell the full
+                story—context does. VORP Vision helps you see who is most important to draft each round so you can make
+                sharper choices with confidence.</p>
+        </section>
     </div>
 {% endblock %}
