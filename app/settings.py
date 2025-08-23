@@ -13,6 +13,11 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS').split(',')
 
 # Application definition
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -95,10 +100,9 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]  # if you keep a global static/ dir
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 LOGIN_REDIRECT_URL = '/'
 
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
