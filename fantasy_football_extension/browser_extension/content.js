@@ -2,14 +2,7 @@ let undoStack = [];
 let allPlayers = [];
 let draftedPlayers = new Set();
 
-function getApiBaseUrl() {
-    // if you're on your own localhost testing Sleeper clone
-    if (["localhost", "127.0.0.1"].includes(window.location.hostname)) {
-        return "http://127.0.0.1:8000";
-    }
-    // if you're actually on sleeper.com
-    return "https://fantasyfootballextension.onrender.com";
-}
+const baseUrl = "https://fantasyfootballextension.onrender.com";
 
 chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     console.log('request.type: ', request.type);
@@ -23,7 +16,7 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
         draftedPlayers = new Set();
 
         try {
-            const response = await fetch("${getApiBaseUrl()}/api/player_rankings/", {
+            const response = await fetch(`${baseUrl}/api/player_rankings/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
