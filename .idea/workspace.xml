@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f803573e-f3ca-42cd-941c-1171ced4f31b" name="Changes" comment="initialized project">
-      <change beforePath="$PROJECT_DIR$/.idea/FantasyFootballExtension.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FantasyFootballExtension.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/middleware.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +103,7 @@
       <workItem from="1754250032625" duration="1306000" />
       <workItem from="1754258576066" duration="1253000" />
       <workItem from="1754269737438" duration="3162000" />
-      <workItem from="1755982145577" duration="1000000" />
+      <workItem from="1755982145577" duration="1855000" />
     </task>
     <servers />
   </component>

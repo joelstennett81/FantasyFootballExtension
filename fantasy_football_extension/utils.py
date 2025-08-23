@@ -82,7 +82,6 @@ def import_csv_rankings(path_to_file, source_type, scoring_type):
                 position=position,
                 team_name=team,
             )
-            print('source type:', source_type)
             if source_type == 'cbs':
                 if scoring_type == 'ppr':
                     player.projected_points_cbs_ppr = points
@@ -100,5 +99,3 @@ def import_csv_rankings(path_to_file, source_type, scoring_type):
                     player.projected_points_draft_sharks_std = points
             player.save()
             count += 1
-
-    print(f"Imported {count} players from CBS.")
