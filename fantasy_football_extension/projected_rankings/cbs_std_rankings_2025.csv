@@ -22,7 +22,7 @@ C.J.,Stroud,QB,HOU,272.16
 J.J.,McCarthy,QB,MIN,265.9
 Trevor,Lawrence,QB,JAC,270.22
 Drake,Maye,QB,NE,269.72
-Michael,Penix Jr.,QB,ATL,257.42
+Michael,Penix,QB,ATL,257.42
 Aaron,Rodgers,QB,PIT,242.56
 Sam,Darnold,QB,SEA,241.8
 Russell,Wilson,QB,NYG,243.06
@@ -71,7 +71,7 @@ Chuba,Hubbard,RB,CAR,157
 D'Andre,Swift,RB,CHI,155
 David,Montgomery,RB,DET,153
 Joe,Mixon,RB,HOU,148
-Brian,Robinson Jr. ,RB,WAS,137
+Brian,Robinson,RB,WAS,137
 Tony,Pollard,RB,TEN,134
 TreVeyon,Henderson,RB,NE,129
 Omarion,Hampton,RB,LAC,124
@@ -84,7 +84,7 @@ Cam,Skattebo,RB,NYG,106
 J.K.,Dobbins,RB,DEN,102
 Kendre,Miller,RB,NO,100
 Rhamondre,Stevenson,RB,NE,98
-Tyrone,Tracy Jr.,RB,NYG,97
+Tyrone,Tracy.,RB,NYG,97
 Zack,Moss,RB,CIN,96
 Bhayshul,Tuten,RB,JAC,96
 Isiah,Pacheco,RB,KC,96
@@ -101,7 +101,7 @@ Jaydon,Blue,RB,DAL,85
 Isaac,Guerendo,RB,SF,85
 Raheem,Mostert,RB,LV,80
 Tyjae,Spears,RB,TEN,79
-Travis,Etienne Jr.,RB,JAC,75
+Travis,Etienne,RB,JAC,75
 Trey,Benson,RB,ARI,73
 Ray,Davis,RB,BUF,71
 Dylan,Sampson,RB,CLE,69
@@ -127,7 +127,7 @@ Kyle,Juszczyk,RB,SF,33
 Keaton,Mitchell,RB,BAL,32
 Emari,Demercado,RB,ARI,26
 Kenneth,Gainwell,RB,PIT,23
-Chris,Rodriguez Jr. ,RB,WAS,22
+Chris,Rodriguez,RB,WAS,22
 AJ,Dillon,RB,PHI,22
 Will,Shipley,RB,PHI,20
 Tyler,Goodson,RB,IND,20
@@ -151,14 +151,14 @@ Ollie,Gordon II,RB,MIA,13
 Israel,Abanikanda,RB,GB,13
 Ja'Marr,Chase,WR,CIN,237
 Justin,Jefferson,WR,MIN,197
-Brian,Thomas Jr.,WR,JAC,196
+Brian,Thomas,WR,JAC,196
 Malik,Nabers,WR,NYG,195
 CeeDee,Lamb,WR,DAL,187
 Nico,Collins,WR,HOU,186
 Davante,Adams,WR,LAR,183
 Ladd,McConkey,WR,LAC,183
 Puka,Nacua,WR,LAR,182
-Amon-Ra ,St. Brown,WR,DET,177
+Amon-Ra,St. Brown,WR,DET,177
 Tee,Higgins,WR,CIN,173
 Mike,Evans,WR,TB,172
 A.J.,Brown,WR,PHI,170
@@ -167,7 +167,7 @@ Drake,London,WR,ATL,161
 Tyreek,Hill,WR,MIA,155
 Xavier,Worthy,WR,KC,152
 DK,Metcalf,WR,PIT,151
-Marvin,Harrison Jr.,WR,ARI,150
+Marvin,Harrison.,WR,ARI,150
 Jaxon,Smith-Njigba,WR,SEA,146
 DJ,Moore,WR,CHI,145
 DeVonta,Smith,WR,PHI,141
@@ -210,7 +210,7 @@ Alec,Pierce,WR,IND,93
 Jalen,Tolbert,WR,DAL,91
 Christian,Watson,WR,GB,87
 Michael,Wilson,WR,ARI,86
-Marvin,Mims Jr.,WR,DEN,86
+Marvin,Mims,WR,DEN,86
 Adam,Thielen,WR,CAR,85
 Wan'Dale,Robinson,WR,NYG,83
 Tre,Harris,WR,LAC,83

@@ -7,8 +7,6 @@ class Player(models.Model):
         ("RB", "Running Back"),
         ("WR", "Wide Receiver"),
         ("TE", "Tight End"),
-        ("DST", "Defense"),
-        ("K", "Kicker"),
     ]
 
     first_name = models.CharField(max_length=100)

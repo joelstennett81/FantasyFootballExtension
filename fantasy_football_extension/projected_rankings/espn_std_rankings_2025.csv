@@ -22,7 +22,7 @@ Matthew,Stafford,QB,LAR,274.5
 C.J.,Stroud,QB,Hou,272.4
 Trevor,Lawrence,QB,Jac,278.7
 Cameron,Ward,QB,Ten,255.6
-Michael,Penix Jr.,QB,Atl,250.6
+Michael,Penix,QB,Atl,250.6
 Bryce,Young,QB,Car,265.9
 Geno,Smith,QB,LV,259.1
 Anthony,Richardson,QB,Ind,181.4
@@ -77,15 +77,15 @@ TreVeyon,Henderson,RB,NE,172.7
 Tony,Pollard,RB,Ten,164.9
 RJ,Harvey,RB,Den,158.6
 Isiah,Pacheco,RB,KC,168.5
-Brian,Robinson Jr.,RB,WAS,173.7
-Tyrone,Tracy Jr.,RB,NYG,160.1
+Brian,Robinson.,RB,WAS,173.7
+Tyrone,Tracy.,RB,NYG,160.1
 Javonte,Williams,RB,Dal,162.8
 Rhamondre,Stevenson,RB,NE,150.5
 Jaylen,Warren,RB,Pit,139.9
 Cam,Skattebo,RB,NYG,123
 J.K.,Dobbins,RB,Den,133.3
 Tank,Bigsby,RB,Jac,125.6
-Travis,Etienne Jr.,RB,Jac,109.3
+Travis,Etienne,RB,Jac,109.3
 Austin,Ekeler,RB,WAS,114.1
 Tyjae,Spears,RB,Ten,118.3
 Jerome,Ford,RB,Cle,78.9
@@ -111,7 +111,7 @@ Brandon,Aiyuk,WR,SF,69
 Quentin,Johnston,WR,LAC,106.3
 Jack,Bech,WR,LV,75.1
 Wan'Dale,Robinson,WR,NYG,83.1
-Marvin,Mims Jr.,WR,Den,105.9
+Marvin,Mims,WR,Den,105.9
 Kyle,Williams,WR,NE,72.9
 Rashod,Bateman,WR,Bal,90.3
 Luther,Burden III,WR,Chi,73.7
@@ -132,7 +132,7 @@ Brandin,Cooks,WR,NO,67.3
 George,Kittle,TE,SF,143.60
 Darius,Slayton,WR,NYG,76.2
 DeAndre,Hopkins,WR,Bal,57
-Dont'e,Thornton Jr.,WR,LV,40.5
+Dont'e,Thornton,WR,LV,40.5
 Adonai,Mitchell,WR,Ind,53.1
 Amari,Cooper,WR,FA,0
 Gabe,Davis,WR,FA,0
@@ -164,7 +164,7 @@ Travis,Kelce,TE,KC,101.50
 David,Njoku,TE,Cle,101.00
 Amon-Ra,St. Brown,WR,Det,173.6
 Nico,Collins,WR,Hou,180.6
-Brian,Thomas Jr.,WR,Jac,175.1
+Brian,Thomas,WR,Jac,175.1
 Tucker,Kraft,TE,GB,97.00
 A.J.,Brown,WR,Phi,184.2
 Drake,London,WR,Atl,169.5
@@ -193,7 +193,7 @@ Mike,Evans,WR,TB,156.7
 Jaxon,Smith-Njigba,WR,Sea,152.6
 Mason,Taylor,TE,NYJ,74.70
 Isaiah,Likely,TE,Bal,74.80
-Marvin,Harrison Jr.,WR,Ari,157.4
+Marvin,Harrison.,WR,Ari,157.4
 DK,Metcalf,WR,Pit,158.8
 Xavier,Worthy,WR,KC,163.9
 Dalton,Schultz,TE,Hou,70.40
@@ -242,7 +242,7 @@ Isaiah,Davis,RB,NYJ,14.6
 Brashard,Smith,RB,KC,12.4
 Chris,Brooks,RB,GB,11.7
 Hunter,Luepke,RB,Dal,7.8
-Pierre,Strong Jr.,RB,Cle,7.2
+Pierre,Strong,RB,Cle,7.2
 AJ,Dillon,RB,Phi,9.4
 Emanuel,Wilson,RB,GB,6.5
 Khalil,Herbert,RB,Ind,8.1
@@ -264,7 +264,7 @@ Dawson,Knox,TE,Buf,30.10
 Noah,Gray,TE,KC,39.20
 Austin,Hooper,TE,NE,33.90
 Cole,Kmet,TE,Chi,23.50
-Harold,Fannin Jr.,TE,Cle,24.20
+Harold,Fannin,TE,Cle,24.20
 Luke,Musgrave,TE,GB,19.70
 Foster,Moreau,TE,NO,39.70
 Tommy,Tremble,TE,Car,31.10

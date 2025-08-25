@@ -23,7 +23,7 @@ Tua,Tagovailoa,QB,MIA,256
 Bryce,Young,QB,CAR,246
 Geno,Smith,QB,LV,261
 Matthew,Stafford,QB,LAR,256
-Michael,Penix Jr.,QB,ATL,253
+Michael,Penix,QB,ATL,253
 Cameron,Ward,QB,TEN,245
 Sam,Darnold,QB,SEA,245
 Aaron,Rodgers,QB,PIT,226
@@ -68,12 +68,12 @@ Joe,Mixon,RB,HOU,183
 Tony,Pollard,RB,TEN,191
 TreVeyon,Henderson,RB,NE,178
 RJ,Harvey,RB,DEN,178
-Brian,Robinson Jr.,RB,WAS,169
+Brian,Robinson.,RB,WAS,169
 Jaylen,Warren,RB,PIT,170
 Kaleb,Johnson,RB,PIT,168
-Travis,Etienne Jr.,RB,JAC,143
+Travis,Etienne,RB,JAC,143
 Cam,Skattebo,RB,NYG,143
-Tyrone,Tracy Jr.,RB,NYG,157
+Tyrone,Tracy.,RB,NYG,157
 Tyjae,Spears,RB,TEN,137
 Jordan,Mason,RB,MIN,122
 Austin,Ekeler,RB,WAS,137
@@ -147,7 +147,7 @@ Justin,Jefferson,WR,MIN,301
 Puka,Nacua,WR,LAR,283
 Malik,Nabers,WR,NYG,283
 Nico,Collins,WR,HOU,278
-Brian,Thomas Jr.,WR,JAC,265
+Brian,Thomas,WR,JAC,265
 Amon-Ra,St. Brown,WR,DET,273
 A.J.,Brown,WR,PHI,257
 Drake,London,WR,ATL,259
@@ -160,7 +160,7 @@ Rashee,Rice,WR,KC,208
 Garrett,Wilson,WR,NYJ,224
 Jaxon,Smith-Njigba,WR,SEA,230
 DJ,Moore,WR,CHI,226
-Marvin,Harrison Jr.,WR,ARI,230
+Marvin,Harrison.,WR,ARI,230
 Terry,McLaurin,WR,WAS,228
 DK,Metcalf,WR,PIT,222
 Xavier,Worthy,WR,KC,210
@@ -201,7 +201,7 @@ Romeo,Doubs,WR,GB,134
 Tre,Harris,WR,LAC,151
 Quentin,Johnston,WR,LAC,141
 Luther,Burden III,WR,CHI,120
-Marvin,Mims Jr.,WR,DEN,144
+Marvin,Mims,WR,DEN,144
 Cedric,Tillman,WR,CLE,136
 Joshua,Palmer,WR,BUF,122
 Wan'Dale,Robinson,WR,NYG,145
@@ -231,7 +231,7 @@ DeAndre,Hopkins,WR,BAL,103
 Tutu,Atwell,WR,LAR,95
 Kayshon,Boutte,WR,NE,72
 Josh,Reynolds,WR,NYJ,78
-Dont'e,Thornton Jr.,WR,LV,95
+Dont'e,Thornton,WR,LV,95
 Andrei,Iosivas,WR,CIN,85
 Noah,Brown,WR,WAS,83
 Calvin,Austin III,WR,PIT,115
@@ -280,7 +280,7 @@ Tyler,Higbee,TE,LAR,105
 Terrance,Ferguson,TE,LAR,46
 Will,Dissly,TE,LAC,85
 AJ,Barner,TE,SEA,68
-Harold,Fannin Jr.,TE,CLE,57
+Harold,Fannin,TE,CLE,57
 Noah,Gray,TE,KC,82
 Taysom,Hill,TE,NO,99
 Oronde,Gadsden II,TE,LAC,37

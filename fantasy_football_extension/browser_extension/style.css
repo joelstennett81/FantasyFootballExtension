@@ -34,31 +34,31 @@
     z-index: 1;
 }
 
-/* Tier colors - high contrast */
-.tier-1 {
-    background-color: #006064;
+.elite {
+    background-color: #006400; /* dark green */
     color: white;
 }
 
-.tier-2 {
-    background-color: #33691E;
+.above-average {
+    background-color: #228B22; /* forest green */
     color: white;
 }
 
-.tier-3 {
-    background-color: #F57F17;
+.average-starter {
+    background-color: #CCCC00; /* mustard yellow */
     color: black;
 }
 
-.tier-4 {
-    background-color: #BF360C;
+.below-average-starter {
+    background-color: #FFA500; /* orange */
+    color: black;
+}
+
+.bench {
+    background-color: #B22222; /* firebrick red */
     color: white;
 }
 
-.tier-5 {
-    background-color: #263238;
-    color: white;
-}
 
 /* Other styles */
 .disappeared {
