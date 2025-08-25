@@ -11,7 +11,9 @@
 
 <header class="topbar">
     <div class="logo">
-        <a href="{% url 'home_page' %}">VORP Vision</a>
+        <a href="{% url 'home_page' %}">
+            <img src="{% static 'images/logo.png' %}" alt="VORP Vision Logo" class="logo-img">
+        </a>
     </div>
     <nav class="nav-links">
         <a href="{% url 'home_page' %}"
@@ -36,6 +38,7 @@
 <footer class="text-center py-3 mt-5">
     <p>{{ now|date:"Y" }} VORP Vision. Built for smarter fantasy drafts.</p>
     <p>Contact: <a href="mailto:joelstennett17@gmail.com">joelstennett17@gmail.com</a></p>
+    <p><a href="{% url 'privacy_page' %}">Privacy Policy</a></p>
 </footer>
 
 

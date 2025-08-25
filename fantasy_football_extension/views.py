@@ -15,7 +15,8 @@ def view_player_rankings(request):
 def home_page(request):
     return render(request, 'home.html')
 
-
+def privacy_page(request):
+    return render(request, 'privacy.html')
 # Simple register form
 
 def register_view(request):
