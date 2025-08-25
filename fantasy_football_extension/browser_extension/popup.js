@@ -1,4 +1,5 @@
-const baseUrl = "https://fantasyfootballextension.onrender.com";
+const baseUrl = "https://fantasyfootballextension.onrender.com/api";
+//const baseUrl = "http://127.0.0.1:8000/api";
 
 const token = localStorage.getItem("authToken");
 

@@ -22,7 +22,7 @@ Drake,Maye,QB,NE,271.3
 C.J.,Stroud,QB,Hou,272.4
 Trevor,Lawrence,QB,Jac,278.7
 Cameron,Ward,QB,Ten,255.6
-Michael,Penix Jr.,QB,Atl,250.6
+Michael,Penix,QB,Atl,250.6
 Geno,Smith,QB,LV,259.1
 Anthony,Richardson,QB,Ind,181.4
 Bryce,Young,QB,Car,265.9
@@ -78,14 +78,14 @@ RJ,Harvey,RB,Den,208.6
 Tony,Pollard,RB,Ten,210.3
 Isiah,Pacheco,RB,KC,211.1
 Javonte,Williams,RB,Dal,212.1
-Tyrone,Tracy Jr. ,RB,NYG,197.5
-Brian,Robinson Jr.,RB,WAS,199.4
+Tyrone,Tracy,RB,NYG,197.5
+Brian,Robinson.,RB,WAS,199.4
 Jaylen,Warren,RB,Pit,195.9
 Rhamondre,Stevenson,RB,NE,179.5
 Cam,Skattebo,RB,NYG,155.5
 J.K.,Dobbins,RB,Den,167
 Austin,Ekeler,RB,WAS,164.7
-Travis,Etienne Jr.,RB,JAC,153.3
+Travis,Etienne,RB,JAC,153.3
 Tyjae,Spears,RB,Ten,158.2
 Tank,Bigsby,RB,JAC,142.6
 Jerome,Ford,RB,Cle,104.8
@@ -143,7 +143,7 @@ Isaiah,Davis,RB,NYJ,18.2
 Jordan,James,RB,SF,17.7
 Chris,Brooks,RB,GB,15.7
 Hunter,Luepke,RB,Dal,12.3
-Pierre,Strong Jr.,RB,Cle,11.8
+Pierre,Strong,RB,Cle,11.8
 AJ,Dillon,RB,Phi,11.2
 Emanuel,Wilson,RB,GB,10.5
 Khalil,Herbert,RB,Ind,9.9
@@ -157,7 +157,7 @@ Malik,Nabers,WR,NYG,300
 Amon-Ra,St. Brown,WR,Det,290.3
 Nico,Collins,WR,Hou,278.2
 A.J.,Brown,WR,Phi,275.5
-Brian,Thomas Jr. ,WR,JAC,270.7
+Brian,Thomas,WR,JAC,270.7
 Drake,London,WR,Atl,266.8
 Tee,Higgins,WR,Cin,264.8
 Tyreek,Hill,WR,Mia,262.9
@@ -167,7 +167,7 @@ Terry,McLaurin,WR,WAS,246.8
 Jaxon,Smith-Njigba,WR,Sea,243
 Garrett,Wilson,WR,NYJ,240.6
 DK,Metcalf,WR,Pit,240.4
-Marvin,Harrison Jr. ,WR,Ari,240
+Marvin,Harrison,WR,Ari,240
 Xavier,Worthy,WR,KC,239.5
 DJ,Moore,WR,Chi,238.2
 Mike,Evans,WR,TB,237.2
@@ -208,7 +208,7 @@ Quentin,Johnston,WR,LAC,158
 Marquise,Brown,WR,KC,157.4
 Xavier,Legette,WR,Car,155.5
 Wan'Dale,Robinson,WR,NYG,152
-Marvin,Mims Jr.,WR,Den,149.5
+Marvin,Mims,WR,Den,149.5
 Emeka,Egbuka,WR,TB,147.9
 Rashod,Bateman,WR,Bal,133.5
 DeMario,Douglas,WR,NE,130.5
@@ -241,7 +241,7 @@ Alec,Pierce,WR,Ind,72.5
 KaVontae,Turpin,WR,Dal,71.5
 Andrei,Iosivas,WR,Cin,71.3
 Jalen,Tolbert,WR,Dal,69.9
-Dont'e,Thornton Jr.,WR,LV,66.7
+Dont'e,Thornton,WR,LV,66.7
 Jaylin,Noel,WR,Hou,65.3
 Tre,Tucker,WR,LV,63
 Van,Jefferson,WR,Ten,61.7

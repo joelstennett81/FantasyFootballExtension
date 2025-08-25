@@ -2,10 +2,10 @@ let undoStack = [];
 let allPlayers = [];
 let draftedPlayers = new Set();
 
-const baseUrl = "https://fantasyfootballextension.onrender.com";
+const baseUrl = "https://fantasyfootballextension.onrender.com/api/player_rankings/";
+//const baseUrl = "http://127.0.0.1:8000/api/player_rankings/";
 
-chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
-    console.log('request.type: ', request.type);
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.type === "SHOW_RANKINGS") {
         const {num_teams, ppr_type, position, sort_by, token} = request.filters;
 
@@ -15,25 +15,34 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
         localStorage.removeItem("draftedPlayers");
         draftedPlayers = new Set();
 
-        try {
-            const response = await fetch(`${baseUrl}/api/player_rankings/`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Token ${token}`
-                },
-                body: JSON.stringify({num_teams, ppr_type, position, sort_by})
-            });
+        (async () => {
+            try {
+                const response = await fetch(baseUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Token ${token}`
+                    },
+                    body: JSON.stringify({num_teams, ppr_type, position, sort_by})
+                });
 
-            if (!response.ok) throw new Error("Unauthorized");
+                if (!response.ok) {
+                    const text = await response.text();
+                    sendResponse({ok: false, error: text});
+                    return;
+                }
 
-            const players = await response.json();
-            allPlayers = players;
-            renderPanel(players, "", sort_by);
-        } catch (err) {
-            console.error("Failed to load rankings:", err);
-            alert("Failed to load fantasy rankings. You must be logged in.");
-        }
+                const players = await response.json();
+                allPlayers = players;
+                renderPanel(players, "", sort_by);
+                sendResponse({ok: true, count: players.length});
+            } catch (err) {
+                sendResponse({ok: false, error: err.message});
+            }
+        })();
+
+        // IMPORTANT: keep the channel open for async sendResponse
+        return true;
     }
 });
 
@@ -218,7 +227,6 @@ function updateLocalStorage() {
 
 function applyDraftToggleView() {
     const isShowingDrafted = document.querySelector("#toggle-drafted").textContent === "Show Undrafted";
-
     document.querySelectorAll("tbody tr").forEach(row => {
         const cb = row.querySelector(".drafted-checkbox");
         const isDrafted = cb.checked;
@@ -227,13 +235,24 @@ function applyDraftToggleView() {
     });
 }
 
-function getTierClass(vorp) {
-    if (vorp >= 90) return "tier-1";
-    if (vorp >= 60) return "tier-2";
-    if (vorp >= 25) return "tier-3";
-    if (vorp >= 0) return "tier-4";
-    return "tier-5";
+function getVorpPercentile(vorp, allPlayers) {
+    const sorted = [...allPlayers]
+        .map(p => p.vorp)
+        .sort((a, b) => a - b);
+    const rank = sorted.findIndex(v => vorp <= v);
+    return rank === -1 ? 100 : (rank / sorted.length) * 100;
 }
+
+function getTierClass(vorp) {
+    const percentile = getVorpPercentile(vorp, allPlayers);
+
+    if (percentile >= 90) return "elite";
+    if (percentile >= 70) return "above-average";
+    if (percentile >= 30) return "average-starter";
+    if (percentile >= 10) return "below-average-starter";
+    return "bench";
+}
+
 
 function makeDraggable(panel, header) {
     let offsetX = 0, offsetY = 0, isDragging = false;
@@ -260,3 +279,4 @@ function observeDraftBoard() {
     const observer = new MutationObserver(updateDraftFromPage);
     observer.observe(document.body, {childList: true, subtree: true});
 }
+

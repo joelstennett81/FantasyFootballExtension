@@ -23,7 +23,7 @@ Tua,Tagovailoa,QB,MIA,256
 Bryce,Young,QB,CAR,246
 Geno,Smith,QB,LV,261
 Matthew,Stafford,QB,LAR,256
-Michael,Penix Jr.,QB,ATL,253
+Michael,Penix,QB,ATL,253
 Cameron,Ward,QB,TEN,245
 Sam,Darnold,QB,SEA,245
 Aaron,Rodgers,QB,PIT,226
@@ -67,7 +67,7 @@ Tony,Pollard,RB,TEN,154
 Aaron,Jones,RB,MIN,148
 TreVeyon,Henderson,RB,NE,143
 Kaleb,Johnson,RB,PIT,147
-Brian,Robinson Jr.,RB,WAS,147
+Brian,Robinson.,RB,WAS,147
 D'Andre,Swift,RB,CHI,155
 RJ,Harvey,RB,DEN,141
 Jordan,Mason,RB,MIN,107
@@ -75,8 +75,8 @@ Jaylen,Warren,RB,PIT,124
 Quinshon,Judkins,RB,CLE,110
 Cam,Skattebo,RB,NYG,113
 Tank,Bigsby,RB,JAC,102
-Tyrone,Tracy Jr.,RB,NYG,126
-Travis,Etienne Jr.,RB,JAC,105
+Tyrone,Tracy.,RB,NYG,126
+Travis,Etienne,RB,JAC,105
 J.K.,Dobbins,RB,DEN,114
 Javonte,Williams,RB,DAL,109
 Tyjae,Spears,RB,TEN,102
@@ -134,7 +134,7 @@ AJ,Dillon,RB,PHI,45
 Khalil,Herbert,RB,IND,45
 Audric,Estime,RB,DEN,29
 Cam,Akers,RB,NO,24
-Chris,Rodriguez Jr.,RB,WAS,21
+Chris,Rodriguez,RB,WAS,21
 Emari,Demercado,RB,ARI,31
 Jeremy,McNichols,RB,WAS,11
 Jaleel,McLaughlin,RB,DEN,23
@@ -146,7 +146,7 @@ Justin,Jefferson,WR,MIN,197
 CeeDee,Lamb,WR,DAL,184
 Puka,Nacua,WR,LAR,177
 Nico,Collins,WR,HOU,187
-Brian,Thomas Jr.,WR,JAC,175
+Brian,Thomas,WR,JAC,175
 Malik,Nabers,WR,NYG,176
 A.J.,Brown,WR,PHI,174
 Drake,London,WR,ATL,166
@@ -156,7 +156,7 @@ Tyreek,Hill,WR,MIA,153
 Mike,Evans,WR,TB,166
 Ladd,McConkey,WR,LAC,164
 Davante,Adams,WR,LAR,160
-Marvin,Harrison Jr.,WR,ARI,155
+Marvin,Harrison.,WR,ARI,155
 DK,Metcalf,WR,PIT,149
 Terry,McLaurin,WR,WAS,150
 Jameson,Williams,WR,DET,134
@@ -201,7 +201,7 @@ Rashod,Bateman,WR,BAL,98
 Romeo,Doubs,WR,GB,86
 Emeka,Egbuka,WR,TB,93
 Quentin,Johnston,WR,LAC,92
-Marvin,Mims Jr.,WR,DEN,95
+Marvin,Mims,WR,DEN,95
 Joshua,Palmer,WR,BUF,78
 Luther,Burden III,WR,CHI,71
 Cedric,Tillman,WR,CLE,83
@@ -226,7 +226,7 @@ Christian,Watson,WR,GB,51
 Dyami,Brown,WR,JAC,62
 Tyler,Lockett,WR,TEN,70
 Ray-Ray,McCloud III,WR,ATL,56
-Dont'e,Thornton Jr.,WR,LV,62
+Dont'e,Thornton,WR,LV,62
 Kayshon,Boutte,WR,NE,47
 DeAndre,Hopkins,WR,BAL,70
 Jaylin,Noel,WR,HOU,48
@@ -278,7 +278,7 @@ Taysom,Hill,TE,NO,69
 Noah,Fant,TE,FA,45
 Terrance,Ferguson,TE,LAR,27
 Tyler,Higbee,TE,LAR,63
-Harold,Fannin Jr.,TE,CLE,32
+Harold,Fannin,TE,CLE,32
 Will,Dissly,TE,LAC,48
 Noah,Gray,TE,KC,51
 AJ,Barner,TE,SEA,40
