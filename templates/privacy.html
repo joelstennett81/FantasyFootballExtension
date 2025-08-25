@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Privacy Policy{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2>Privacy Policy</h2>
+  <p><strong>Effective Date:</strong> August 25, 2025</p>
+
+  <h3>Information We Collect</h3>
+  <p>When you register or log in, we collect your email address and basic account details (first and last name, username). This information is used to create and manage your account.</p>
+  <p>When using the VORP Vision extension, no additional personal data is collected. The extension only fetches public fantasy football rankings data from our API at <code>fantasyfootballextension.onrender.com</code>.</p>
+
+  <h3>How We Use Information</h3>
+  <ul>
+    <li>Email addresses are used for account authentication and login.</li>
+    <li>We may use your email to send important service-related updates.</li>
+    <li>No personal information is shared with the extension itself — only your authenticated session is used to retrieve rankings data.</li>
+  </ul>
+
+  <h3>Permissions</h3>
+  <p>The extension requires limited permissions (<code>activeTab</code>, <code>scripting</code>, and host permissions for Sleeper and our API). These are used only to inject and display the rankings overlay panel on Sleeper’s site.</p>
+
+  <h3>Data Sharing</h3>
+  <p>We do not sell or share your personal information with third parties. Account data is used strictly for providing access to the VORP Vision platform and extension.</p>
+
+  <h3>Data Security</h3>
+  <p>We implement standard security measures to protect stored account information. However, no online system can guarantee 100% security.</p>
+
+  <h3>Contact</h3>
+  <p>If you have questions, contact us at <a href="mailto:joelstennett17@gmail.com">joelstennett17@gmail.com</a>.</p>
+</div>
+{% endblock %}

@@ -107,6 +107,12 @@ table td {
     color: #333;
 }
 
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
+
 .nav-links a {
     margin-left: 1.5rem;
     text-decoration: none;
