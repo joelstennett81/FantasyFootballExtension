@@ -4,7 +4,6 @@
   "version": "1.0",
   "description": "Displays VORP/VOAS rankings on fantasy platforms",
   "permissions": [
-    "scripting",
     "activeTab"
   ],
   "host_permissions": [
