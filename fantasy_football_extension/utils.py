@@ -70,7 +70,6 @@ def import_csv_rankings(path_to_file, source_type, scoring_type):
         reader = csv.DictReader(f)
         count = 0
         for row in reader:
-            print('row: ', row)
             first_name = row["First Name"].strip()
             last_name = row["Last Name"].strip()
             position = row["Position"].strip()
