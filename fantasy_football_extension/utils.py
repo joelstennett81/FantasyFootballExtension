@@ -15,7 +15,7 @@ def calculate_vorp_and_voas(num_teams=12, starting_spots=None, ppr_type="ppr"):
     }
     suffix = suffix_map.get(ppr_type, "ppr")
 
-    players = list(Player.objects.all())
+    players = list(Player.objects.filter(year="2026"))
 
     for p in players:
         try:
@@ -70,6 +70,7 @@ def import_csv_rankings(path_to_file, source_type, scoring_type):
         reader = csv.DictReader(f)
         count = 0
         for row in reader:
+            print('row: ', row)
             first_name = row["First Name"].strip()
             last_name = row["Last Name"].strip()
             position = row["Position"].strip()
@@ -81,6 +82,7 @@ def import_csv_rankings(path_to_file, source_type, scoring_type):
                 last_name=last_name,
                 position=position,
                 team_name=team,
+                year="2026"
             )
             if source_type == 'cbs':
                 if scoring_type == 'ppr':
@@ -99,3 +101,11 @@ def import_csv_rankings(path_to_file, source_type, scoring_type):
                     player.projected_points_draft_sharks_std = points
             player.save()
             count += 1
+
+def backfill_players_years():
+    players = Player.objects.filter(year="")
+    for player in players:
+        if not player.year:
+            player.year = "2025"
+            player.save()
+

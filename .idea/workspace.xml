@@ -5,9 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f803573e-f3ca-42cd-941c-1171ced4f31b" name="Changes" comment="initialized project">
+      <change afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/cbs_ppr_rankings_2026.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/cbs_std_rankings_2026.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/draft_sharks_ppr_rankings_2026.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/draft_sharks_std_rankings_2026.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/espn_ppr_rankings_2026.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/espn_std_rankings_2026.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/browser_extension/fantasy_extension.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/browser_extension/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/browser_extension/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/cbs_ppr_rankings_2025.csv" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings_old/cbs_ppr_rankings_2025.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/cbs_std_rankings_2025.csv" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings_old/cbs_std_rankings_2025.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/draft_sharks_ppr_rankings_2025.csv" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings_old/draft_sharks_ppr_rankings_2025.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/draft_sharks_std_rankings_2025.csv" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings_old/draft_sharks_std_rankings_2025.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/espn_ppr_rankings_2025.csv" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings_old/espn_ppr_rankings_2025.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings/espn_std_rankings_2025.csv" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_extension/projected_rankings_old/espn_std_rankings_2025.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/player_rankings.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player_rankings.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +48,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;add-privacy-page&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;add-poetry-and-pytest&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Projects/FantasyFootballExtension/fantasy_football_extension/projected_rankings&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -51,9 +62,11 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Projects\FantasyFootballExtension\fantasy_football_extension\projected_rankings" />
+      <recent name="C:\Projects\FantasyFootballExtension\fantasy_football_extension\projected_rankings_2026" />
       <recent name="C:\Projects\FantasyFootballExtension\fantasy_football_extension\migrations" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projects\FantasyFootballExtension\fantasy_football_extension" />
       <recent name="C:\Projects\FantasyFootballExtension\static\images" />
       <recent name="C:\Projects\FantasyFootballExtension" />
     </key>
@@ -106,6 +119,12 @@
       <workItem from="1755982145577" duration="3066000" />
       <workItem from="1756130462905" duration="10520000" />
       <workItem from="1756296015857" duration="99000" />
+      <workItem from="1756296237294" duration="312000" />
+      <workItem from="1756597015541" duration="967000" />
+      <workItem from="1757697864224" duration="3012000" />
+      <workItem from="1758122042669" duration="920000" />
+      <workItem from="1787440755711" duration="9003000" />
+      <workItem from="1787505258337" duration="2916000" />
     </task>
     <servers />
   </component>

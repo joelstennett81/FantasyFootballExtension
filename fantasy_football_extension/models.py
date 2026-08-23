@@ -19,6 +19,7 @@ class Player(models.Model):
     projected_points_espn_std = models.FloatField(default=0)
     projected_points_draft_sharks_ppr = models.FloatField(default=0)
     projected_points_draft_sharks_std = models.FloatField(default=0)
+    year = models.CharField(max_length=4, default="")
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} ({self.position})"
